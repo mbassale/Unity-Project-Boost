@@ -11,6 +11,9 @@ public class Rocket : MonoBehaviour
     [SerializeField] AudioClip mainEngine;
     [SerializeField] AudioClip success;
     [SerializeField] AudioClip death;
+    [SerializeField] ParticleSystem mainEngineParticles;
+    [SerializeField] ParticleSystem successParticles;
+    [SerializeField] ParticleSystem deathParticles;
 
     const string FRIENDLY_TAG = "Friendly";
     const string FINISH_TAG = "Finish";
@@ -65,6 +68,11 @@ public class Rocket : MonoBehaviour
             audioSource.Stop();
         }
         audioSource.PlayOneShot(success);
+        if (mainEngineParticles.isPlaying)
+        {
+            mainEngineParticles.Stop();
+        }
+        successParticles.Play();
         Invoke(nameof(LoadNextLevel), 2f);
     }
 
@@ -76,6 +84,11 @@ public class Rocket : MonoBehaviour
             audioSource.Stop();
         }
         audioSource.PlayOneShot(death);
+        if (mainEngineParticles.isPlaying)
+        {
+            mainEngineParticles.Stop();
+        }
+        deathParticles.Play();
         Invoke(nameof(LoadFirstLevel), 2f);
     }
 
@@ -107,6 +120,10 @@ public class Rocket : MonoBehaviour
             {
                 audioSource.Stop();
             }
+            if (mainEngineParticles.isPlaying)
+            {
+                mainEngineParticles.Stop();
+            }
         }
     }
 
@@ -117,6 +134,7 @@ public class Rocket : MonoBehaviour
         {
             audioSource.PlayOneShot(mainEngine);
         }
+        mainEngineParticles.Play();
     }
 
     private void Rotate()
