@@ -10,6 +10,8 @@ public class Rocket : MonoBehaviour
     [SerializeField]
     float mainThrust = 750f;
 
+    const string FRIENDLY_TAG = "Friendly";
+
     Rigidbody rigidBody;
     AudioSource audioSource;
 
@@ -25,6 +27,20 @@ public class Rocket : MonoBehaviour
     {
         Thrust();
         Rotate();
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case FRIENDLY_TAG:
+                // do nothing
+                print("OK");
+                break;
+            default:
+                print("DEAD");
+                break;
+        }
     }
 
     private void Thrust()
