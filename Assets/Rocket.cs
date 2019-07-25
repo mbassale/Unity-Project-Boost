@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour
 {
-    [SerializeField]
-    float rcsThrust = 100f;
-    [SerializeField]
-    float mainThrust = 750f;
+    [SerializeField] float rcsThrust = 100f;
+    [SerializeField] float mainThrust = 750f;
+    [SerializeField] AudioClip mainEngine;
+    [SerializeField] AudioClip success;
+    [SerializeField] AudioClip death;
 
     const string FRIENDLY_TAG = "Friendly";
     const string FINISH_TAG = "Finish";
@@ -48,16 +49,34 @@ public class Rocket : MonoBehaviour
                 // do nothing
                 break;
             case FINISH_TAG:
-                state = State.Transcending;
-                audioSource.Stop();
-                Invoke(nameof(LoadNextLevel), 2f);
+                StartSuccessSequence();
                 break;
             default:
-                state = State.Dying;
-                audioSource.Stop();
-                Invoke(nameof(LoadFirstLevel), 2f);
+                StartDeathSequence();
                 break;
         }
+    }
+
+    private void StartSuccessSequence()
+    {
+        state = State.Transcending;
+        if (audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+        audioSource.PlayOneShot(success);
+        Invoke(nameof(LoadNextLevel), 2f);
+    }
+
+    private void StartDeathSequence()
+    {
+        state = State.Dying;
+        if (audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+        audioSource.PlayOneShot(death);
+        Invoke(nameof(LoadFirstLevel), 2f);
     }
 
     private void LoadFirstLevel()
@@ -80,11 +99,7 @@ public class Rocket : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            rigidBody.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
-            if (!audioSource.isPlaying)
-            {
-                audioSource.Play();
-            }
+            ApplyThrust();
         }
         else
         {
@@ -92,6 +107,15 @@ public class Rocket : MonoBehaviour
             {
                 audioSource.Stop();
             }
+        }
+    }
+
+    private void ApplyThrust()
+    {
+        rigidBody.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(mainEngine);
         }
     }
 
