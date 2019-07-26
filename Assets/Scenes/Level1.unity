@@ -130,12 +130,12 @@ PrefabInstance:
     - target: {fileID: 613233207265079741, guid: 76cdcb6deaee9b74493ad8251dac1283,
         type: 3}
       propertyPath: m_Name
-      value: Obstacle (9)
+      value: MovingObstacle
       objectReference: {fileID: 0}
     - target: {fileID: 5542821121633677147, guid: 76cdcb6deaee9b74493ad8251dac1283,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.2
+      value: -18.82
       objectReference: {fileID: 0}
     - target: {fileID: 5542821121633677147, guid: 76cdcb6deaee9b74493ad8251dac1283,
         type: 3}
@@ -204,6 +204,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76cdcb6deaee9b74493ad8251dac1283, type: 3}
+--- !u!1 &7445787 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 613233207265079741, guid: 76cdcb6deaee9b74493ad8251dac1283,
+    type: 3}
+  m_PrefabInstance: {fileID: 7445786}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7445788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7445787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e12a29780b5b3c741819de5fd2eec99d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementVector: {x: -10, y: 5, z: 0}
+  period: 4
 --- !u!4 &96482226 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5542821121633677147, guid: 76cdcb6deaee9b74493ad8251dac1283,
