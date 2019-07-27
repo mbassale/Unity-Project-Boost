@@ -22,7 +22,6 @@ public class Rocket : MonoBehaviour
 
     enum State { Alive, Dying, Transcending };
     State state = State.Alive;
-    int level = 0;
     bool collisionEnabled = true;
 
     Rigidbody rigidBody;
@@ -37,6 +36,19 @@ public class Rocket : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    { 
+        if (state == State.Alive)
+        {
+            Thrust();
+            Rotate();
+        }
+        if (Debug.isDebugBuild)
+        {
+            RespondToDebugKeys();
+        }
+    }
+
+    private void RespondToDebugKeys()
     {
         if (Input.GetKey(KeyCode.L))
         {
@@ -45,11 +57,6 @@ public class Rocket : MonoBehaviour
         if (Input.GetKey(KeyCode.C))
         {
             collisionEnabled = !collisionEnabled;
-        }
-        if (state == State.Alive)
-        {
-            Thrust();
-            Rotate();
         }
     }
 
@@ -106,12 +113,12 @@ public class Rocket : MonoBehaviour
 
     private void LoadFirstLevel()
     {
-        level = 0;
-        SceneManager.LoadScene(level);
+        SceneManager.LoadScene(0);
     }
 
     private void LoadNextLevel()
     {
+        int level = SceneManager.GetActiveScene().buildIndex;
         level++;
         if (level > 1)
         {
@@ -157,11 +164,11 @@ public class Rocket : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.Rotate(Vector3.forward * rotationThisFrame);
+            transform.Rotate(-Vector3.forward * rotationThisFrame);
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            transform.Rotate(-Vector3.forward * rotationThisFrame);
+            transform.Rotate(Vector3.forward * rotationThisFrame);
         }
 
         rigidBody.freezeRotation = false; // resume physics control of rotation
