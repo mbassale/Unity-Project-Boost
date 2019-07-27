@@ -2413,6 +2413,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4603171023132382}
+  - component: {fileID: 6847024204995020178}
   m_Layer: 0
   m_Name: SpaceObject5
   m_TagString: Untagged
@@ -2504,6 +2505,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6847024204995020178
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379985484890218}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.575899, y: 5.2388463, z: 12.241709}
+  m_Center: {x: -0.00000047683716, y: 0.043236732, z: -0.19456863}
 --- !u!1 &1394251953155186
 GameObject:
   m_ObjectHideFlags: 0

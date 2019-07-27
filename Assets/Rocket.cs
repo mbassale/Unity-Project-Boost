@@ -50,11 +50,15 @@ public class Rocket : MonoBehaviour
 
     private void RespondToDebugKeys()
     {
-        if (Input.GetKey(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.N))
         {
             LoadNextLevel();
         }
-        if (Input.GetKey(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            LoadPreviousLevel();
+        }
+        if (Input.GetKeyDown(KeyCode.C))
         {
             collisionEnabled = !collisionEnabled;
         }
@@ -123,6 +127,17 @@ public class Rocket : MonoBehaviour
         if (level > 1)
         {
             level = 1;
+        }
+        SceneManager.LoadScene(level);
+    }
+
+    private void LoadPreviousLevel()
+    {
+        int level = SceneManager.GetActiveScene().buildIndex;
+        level--;
+        if (level < 0)
+        {
+            level = 0;
         }
         SceneManager.LoadScene(level);
     }

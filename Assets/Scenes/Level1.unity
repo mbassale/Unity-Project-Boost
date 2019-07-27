@@ -544,7 +544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e12a29780b5b3c741819de5fd2eec99d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementVector: {x: 0, y: 10, z: 0}
+  movementVector: {x: 0, y: 7, z: 0}
   period: 5
 --- !u!1001 &647948265
 PrefabInstance:
@@ -865,7 +865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e12a29780b5b3c741819de5fd2eec99d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementVector: {x: 0, y: 10, z: 0}
+  movementVector: {x: 0, y: 7, z: 0}
   period: 5
 --- !u!4 &967592192 stripped
 Transform:
@@ -1353,7 +1353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e12a29780b5b3c741819de5fd2eec99d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementVector: {x: 0, y: -10, z: 0}
+  movementVector: {x: 0, y: -7, z: 0}
   period: 5
 --- !u!1001 &1845640161
 PrefabInstance:
