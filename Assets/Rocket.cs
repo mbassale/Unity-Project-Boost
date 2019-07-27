@@ -16,12 +16,14 @@ public class Rocket : MonoBehaviour
     [SerializeField] ParticleSystem deathParticles;
     [SerializeField] float levelLoadDelay = 1.0f;
 
+
     const string FRIENDLY_TAG = "Friendly";
     const string FINISH_TAG = "Finish";
 
     enum State { Alive, Dying, Transcending };
     State state = State.Alive;
     int level = 0;
+    bool collisionEnabled = true;
 
     Rigidbody rigidBody;
     AudioSource audioSource;
@@ -36,6 +38,14 @@ public class Rocket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+        if (Input.GetKey(KeyCode.C))
+        {
+            collisionEnabled = !collisionEnabled;
+        }
         if (state == State.Alive)
         {
             Thrust();
@@ -46,6 +56,7 @@ public class Rocket : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if (state != State.Alive) { return; }
+        if (!collisionEnabled) { return; }
 
         switch (collision.gameObject.tag)
         {
