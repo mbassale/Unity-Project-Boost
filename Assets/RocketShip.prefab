@@ -441,6 +441,7 @@ MonoBehaviour:
   mainEngineParticles: {fileID: 198100717954512949}
   successParticles: {fileID: 198631064683399964}
   deathParticles: {fileID: 198204747340480272}
+  levelLoadDelay: 2
 --- !u!82 &247318589
 AudioSource:
   m_ObjectHideFlags: 0

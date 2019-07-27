@@ -14,6 +14,7 @@ public class Rocket : MonoBehaviour
     [SerializeField] ParticleSystem mainEngineParticles;
     [SerializeField] ParticleSystem successParticles;
     [SerializeField] ParticleSystem deathParticles;
+    [SerializeField] float levelLoadDelay = 1.0f;
 
     const string FRIENDLY_TAG = "Friendly";
     const string FINISH_TAG = "Finish";
@@ -73,7 +74,7 @@ public class Rocket : MonoBehaviour
             mainEngineParticles.Stop();
         }
         successParticles.Play();
-        Invoke(nameof(LoadNextLevel), 2f);
+        Invoke(nameof(LoadNextLevel), levelLoadDelay);
     }
 
     private void StartDeathSequence()
@@ -89,7 +90,7 @@ public class Rocket : MonoBehaviour
             mainEngineParticles.Stop();
         }
         deathParticles.Play();
-        Invoke(nameof(LoadFirstLevel), 2f);
+        Invoke(nameof(LoadFirstLevel), levelLoadDelay);
     }
 
     private void LoadFirstLevel()
